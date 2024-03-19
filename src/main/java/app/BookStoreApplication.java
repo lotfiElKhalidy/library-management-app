@@ -97,22 +97,22 @@ public class BookStoreApplication implements CommandLineRunner {
 			jdbcTemplate.update("INSERT INTO MY_BOOKS (name, author, price) values('The Lucky One', 'T Swizle', '13$'); ");
 			log.info("MY_BOOKS TABLE POPULATED");
 
-			jdbcTemplate.execute("DROP TABLE books IF EXISTS");
-			jdbcTemplate.execute(
-			"CREATE TABLE books (" +
-			"book_id       IDENTITY PRIMARY KEY," +
-			"name       VARCHAR(500) NOT NULL," +
-			"author       VARCHAR(500) NOT NULL," +
-			"price       VARCHAR(500) NOT NULL" +
-			");"
-			);
-			log.info("books TABLE CREATED");
+			// jdbcTemplate.execute("DROP TABLE books IF EXISTS");
+			// jdbcTemplate.execute(
+			// "CREATE TABLE books (" +
+			// "book_id       IDENTITY PRIMARY KEY," +
+			// "name       VARCHAR(500) NOT NULL," +
+			// "author       VARCHAR(500) NOT NULL," +
+			// "price       VARCHAR(500) NOT NULL" +
+			// ");"
+			// );
+			// log.info("books TABLE CREATED");
 
-			jdbcTemplate.update("INSERT INTO books (name, author, price) values('The age of Adaline', 'Lorde', '22$'); ");
-			jdbcTemplate.update("INSERT INTO books (name, author, price) values('Harry Potter', 'J. K. Rowling', '96$'); ");
-			jdbcTemplate.update("INSERT INTO books (name, author, price) values('True Story', 'Ari', '596$'); ");
-			jdbcTemplate.update("INSERT INTO books (name, author, price) values('The Lucky One', 'T Swizle', '13$'); ");
-			log.info("books TABLE POPULATED");
+			// jdbcTemplate.update("INSERT INTO books (name, author, price) values('The age of Adaline', 'Lorde', '22$'); ");
+			// jdbcTemplate.update("INSERT INTO books (name, author, price) values('Harry Potter', 'J. K. Rowling', '96$'); ");
+			// jdbcTemplate.update("INSERT INTO books (name, author, price) values('True Story', 'Ari', '596$'); ");
+			// jdbcTemplate.update("INSERT INTO books (name, author, price) values('The Lucky One', 'T Swizle', '13$'); ");
+			// log.info("books TABLE POPULATED");
 		}
 
 		// List<String> categories;

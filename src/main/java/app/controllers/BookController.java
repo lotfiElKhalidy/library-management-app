@@ -2,11 +2,7 @@ package app.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.ui.Model;
 
@@ -36,48 +32,42 @@ public class BookController {
 		return "bookRegister";
 	}
 	
-	/*@GetMapping("/available_books")
+	@GetMapping("/available_books")
 	public ModelAndView getAllBook() {
-		List<Book>list=bookRepository.findAll();
-//		ModelAndView m=new ModelAndView();
-//		m.setViewName("bookList");
-//		m.addObject("book",list);
-		return new ModelAndView("bookList","book",list);
-	}*/
+		return new ModelAndView("bookList","book",bookRepository.findAll());
+	}
 	
-	/*@PostMapping("/save")
+	@PostMapping("/save")
 	public String addBook(@ModelAttribute Book b) {
 		bookRepository.save(b);
 		return "redirect:/available_books";
-	}*/
+	}
 
 	@GetMapping("/my_books")
 	public String getMyBooks(Model model)
 	{
-		//List<MyBookList>list=myBookRepository.findAll();
 		model.addAttribute("book",myBookRepository.findAll());
 		return "myBooks";
 	}
 
-	/*@RequestMapping("/mylist/{id}")
+	@RequestMapping("/mylist/{id}")
 	public String getMyList(@PathVariable("id") int id) {
 		Book b=bookRepository.findById(id).get();
 		MyBookList mb=new MyBookList(b.getId(),b.getName(),b.getAuthor(),b.getPrice());
-		myBookRepository.saveMyBooks(mb);
+		myBookRepository.save(mb);
 		return "redirect:/my_books";
-	}*/
+	}
 	
-	/*@RequestMapping("/editBook/{id}")
+	@RequestMapping("/editBook/{id}")
 	public String editBook(@PathVariable("id") int id,Model model) {
 		Book b=bookRepository.findById(id).get();
 		model.addAttribute("book",b);
 		return "bookEdit";
-	}*/
+	}
 
-	/*@RequestMapping("/deleteBook/{id}")
+	@RequestMapping("/deleteBook/{id}")
 	public String deleteBook(@PathVariable("id")int id) {
 		bookRepository.deleteById(id);
 		return "redirect:/available_books";
-	}*/
-	
+	}
 }

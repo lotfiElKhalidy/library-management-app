@@ -38,6 +38,11 @@ public class MyBookList {
 		this.price = price;
 	}
 
+	@Override
+    public String toString() {
+        return String.format("MyBookList[id=%d, name='%s', author='%s', price='%s']", id, name, author, price);
+    }
+
 	public int getId() {
 		return id;
 	}
