@@ -29,57 +29,7 @@ public class BookStoreApplication implements CommandLineRunner {
 	@Override
 	public void run(String... strings) throws Exception {
 		List<String> list = Arrays.asList(strings);
-		if (list.contains("install")) {
-			// le code de création de la base
-			// voir ci-dessous
-			jdbcTemplate.execute("DROP TABLE categories IF EXISTS");
-			jdbcTemplate.execute(
-			"CREATE TABLE categories ("+
-			"category_id IDENTITY PRIMARY KEY," +
-			"name VARCHAR(20) DEFAULT '' "+
-			");"
-			);
-			log.info("categories TABLE CREATED");
-
-			jdbcTemplate.update("INSERT INTO categories(name) values('todo'); ");
-			jdbcTemplate.update("INSERT INTO categories(name) values('wip');  ");
-			jdbcTemplate.update("INSERT INTO categories(name) values('done'); ");
-			log.info("categories TABLE POPULATED");
-
-			jdbcTemplate.execute("DROP TABLE tasks IF EXISTS");
-			jdbcTemplate.execute(
-			"CREATE TABLE tasks (" +
-			"task_id       IDENTITY PRIMARY KEY," +
-			"category      INTEGER NOT NULL," +
-			"content       VARCHAR(500) NOT NULL," +
-			"creation_date DATE DEFAULT CURRENT_DATE(), " +
-			"end_date      DATE DEFAULT NULL, " +
-			"FOREIGN KEY(category) REFERENCES categories(category_id)"+
-			");"
-			);
-			log.info("tasks TABLE CREATED");
-
-			jdbcTemplate.update("INSERT INTO tasks (category, content) values(3, 'finir le tp 1'); ");
-			jdbcTemplate.update("INSERT INTO tasks (category, content) values(2, 'finir le tp 2'); ");
-			jdbcTemplate.update("INSERT INTO tasks (category, content) values(1, 'finir le tp 3'); ");
-			jdbcTemplate.update("INSERT INTO tasks (category, content) values(1, 'finir le tp 3'); ");
-			log.info("tasks TABLE POPULATED");
-		}
-		else if (list.contains("bookStore")) {
-			// jdbcTemplate.execute("DROP TABLE books IF EXISTS");
-			// jdbcTemplate.execute(
-			// "CREATE TABLE books ("+
-			// "category_id IDENTITY PRIMARY KEY," +
-			// "name VARCHAR(20) DEFAULT '' "+
-			// ");"
-			// );
-			// log.info("categories TABLE CREATED");
-
-			// jdbcTemplate.update("INSERT INTO categories(name) values('todo'); ");
-			// jdbcTemplate.update("INSERT INTO categories(name) values('wip');  ");
-			// jdbcTemplate.update("INSERT INTO categories(name) values('done'); ");
-			// log.info("categories TABLE POPULATED");
-
+		if (list.contains("bookStore")) {
 			jdbcTemplate.execute("DROP TABLE MY_BOOKS IF EXISTS");
 			jdbcTemplate.execute(
 			"CREATE TABLE MY_BOOKS (" +
@@ -91,28 +41,47 @@ public class BookStoreApplication implements CommandLineRunner {
 			);
 			log.info("MY_BOOKS TABLE CREATED");
 
-			jdbcTemplate.update("INSERT INTO MY_BOOKS (name, author, price) values('The age of Adaline', 'Lorde', '22$'); ");
-			jdbcTemplate.update("INSERT INTO MY_BOOKS (name, author, price) values('Harry Potter', 'J. K. Rowling', '96$'); ");
-			jdbcTemplate.update("INSERT INTO MY_BOOKS (name, author, price) values('True Story', 'Ari', '596$'); ");
-			jdbcTemplate.update("INSERT INTO MY_BOOKS (name, author, price) values('The Lucky One', 'T Swizle', '13$'); ");
+			// jdbcTemplate.update("INSERT INTO MY_BOOKS (name, author, price) values('The age of Adaline', 'Lorde', '22$'); ");
+			// jdbcTemplate.update("INSERT INTO MY_BOOKS (name, author, price) values('Harry Potter', 'J. K. Rowling', '96$'); ");
+			// jdbcTemplate.update("INSERT INTO MY_BOOKS (name, author, price) values('True Story', 'Ari', '596$'); ");
+			// jdbcTemplate.update("INSERT INTO MY_BOOKS (name, author, price) values('The Lucky One', 'T Swizle', '13$'); ");
 			log.info("MY_BOOKS TABLE POPULATED");
 
-			// jdbcTemplate.execute("DROP TABLE books IF EXISTS");
-			// jdbcTemplate.execute(
-			// "CREATE TABLE books (" +
-			// "book_id       IDENTITY PRIMARY KEY," +
-			// "name       VARCHAR(500) NOT NULL," +
-			// "author       VARCHAR(500) NOT NULL," +
-			// "price       VARCHAR(500) NOT NULL" +
-			// ");"
-			// );
-			// log.info("books TABLE CREATED");
+			jdbcTemplate.execute("DROP TABLE books IF EXISTS");
+			jdbcTemplate.execute(
+			"CREATE TABLE books (" +
+			"book_id       IDENTITY PRIMARY KEY," +
+			"name       VARCHAR(500) NOT NULL," +
+			"author       VARCHAR(500) NOT NULL," +
+			"price       VARCHAR(500) NOT NULL" +
+			");"
+			);
+			log.info("books TABLE CREATED");
 
-			// jdbcTemplate.update("INSERT INTO books (name, author, price) values('The age of Adaline', 'Lorde', '22$'); ");
-			// jdbcTemplate.update("INSERT INTO books (name, author, price) values('Harry Potter', 'J. K. Rowling', '96$'); ");
-			// jdbcTemplate.update("INSERT INTO books (name, author, price) values('True Story', 'Ari', '596$'); ");
-			// jdbcTemplate.update("INSERT INTO books (name, author, price) values('The Lucky One', 'T Swizle', '13$'); ");
-			// log.info("books TABLE POPULATED");
+			jdbcTemplate.update("INSERT INTO books (name, author, price) values('A Court of Mist and Fury', 'Sarah J. Maas', '11.50€'); ");
+			jdbcTemplate.update("INSERT INTO books (name, author, price) values('La Quinta Montaña', 'Paulo Coelho', '14.57€'); ");
+			jdbcTemplate.update("INSERT INTO books (name, author, price) values('The Travels of Ibn Fudayl', 'George Richard Sole', '13.34€'); ");
+			jdbcTemplate.update("INSERT INTO books (name, author, price) values('Dreams, Dialogues and Desires', 'David McNulty', '4.19€'); ");
+			jdbcTemplate.update("INSERT INTO books (name, author, price) values('The Great Gatsby', 'F. Scott Fitzgerald', '9.99€'); ");
+			jdbcTemplate.update("INSERT INTO books (name, author, price) values('To Kill a Mockingbird', 'Harper Lee', '8.50€'); ");
+			jdbcTemplate.update("INSERT INTO books (name, author, price) values('1984', 'George Orwell', '10.25€'); ");
+			jdbcTemplate.update("INSERT INTO books (name, author, price) values('The Catcher in the Rye', 'J.D. Salinger', '7.75€'); ");
+			jdbcTemplate.update("INSERT INTO books (name, author, price) values('Pride and Prejudice', 'Jane Austen', '6.99€'); ");
+			jdbcTemplate.update("INSERT INTO books (name, author, price) values('To the Lighthouse', 'Virginia Woolf', '12.30€'); ");
+			jdbcTemplate.update("INSERT INTO books (name, author, price) values('Brave New World', 'Aldous Huxley', '11.20€'); ");
+			jdbcTemplate.update("INSERT INTO books (name, author, price) values('One Hundred Years of Solitude', 'Gabriel García Márquez', '13.45€'); ");
+			jdbcTemplate.update("INSERT INTO books (name, author, price) values('The Hobbit', 'J.R.R. Tolkien', '9.75€'); ");
+			jdbcTemplate.update("INSERT INTO books (name, author, price) values('The Lord of the Rings', 'J.R.R. Tolkien', '15.99€'); ");
+			jdbcTemplate.update("INSERT INTO books (name, author, price) values('Jane Eyre', 'Charlotte Brontë', '8.75€'); ");
+			jdbcTemplate.update("INSERT INTO books (name, author, price) values('Wuthering Heights', 'Emily Brontë', '10.50€'); ");
+			jdbcTemplate.update("INSERT INTO books (name, author, price) values('Moby-Dick', 'Herman Melville', '11.80€'); ");
+			jdbcTemplate.update("INSERT INTO books (name, author, price) values('Crime and Punishment', 'Fyodor Dostoevsky', '9.25€'); ");
+			jdbcTemplate.update("INSERT INTO books (name, author, price) values('Anna Karenina', 'Leo Tolstoy', '12.60€'); ");
+			jdbcTemplate.update("INSERT INTO books (name, author, price) values('The Picture of Dorian Gray', 'Oscar Wilde', '8.99€'); ");
+			jdbcTemplate.update("INSERT INTO books (name, author, price) values('The Grapes of Wrath', 'John Steinbeck', '10.75€'); ");
+			jdbcTemplate.update("INSERT INTO books (name, author, price) values('The Adventures of Huckleberry Finn', 'Mark Twain', '7.95€'); ");
+			jdbcTemplate.update("INSERT INTO books (name, author, price) values('The Road', 'Cormac McCarthy', '13.20€'); ");
+			log.info("books TABLE POPULATED");
 		}
 
 		// List<String> categories;

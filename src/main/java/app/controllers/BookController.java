@@ -70,4 +70,10 @@ public class BookController {
 		bookRepository.deleteById(id);
 		return "redirect:/available_books";
 	}
+
+	@RequestMapping("/deleteMyList/{id}")
+	public String deleteMyList(@PathVariable("id")int id) {
+		myBookRepository.deleteById(id);
+		return "redirect:/my_books";
+	}
 }
