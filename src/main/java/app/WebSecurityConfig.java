@@ -13,7 +13,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.AccessDeniedHandler;
-import app.exception.CustomAccessDeniedHandler;
+//import app.exception.CustomAccessDeniedHandler;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
@@ -55,27 +55,36 @@ public class WebSecurityConfig{
                 .requestMatchers("/","/book_register/***").hasRole("ADMIN")
                 .requestMatchers("/","/deleteBook/***").hasRole("ADMIN")
                 .requestMatchers("/","/editBook/***").hasRole("ADMIN")
+                .requestMatchers("/","/available_books").hasAnyRole("USER","ADMIN")
                // .exceptionHandling().accessDeniedHandler(accessDeniedHandler)
                 .requestMatchers("/h2-console/**").permitAll() 
                 .anyRequest().authenticated()
+            ).formLogin((form) -> form
+            //	.loginPage("/login")
+               // .loginPage("/login")
+                //.failureUrl("/login?error=true")
+                //.failureUrl("/access-denied")
+                .permitAll()
+            ).exceptionHandling((exceptionHandling) -> exceptionHandling
+                .accessDeniedHandler((request, response, accessDeniedException) -> {
+                    response.sendRedirect("/access-denied");
+                })
+                
             )
-             .exceptionHandling(ex -> ex.accessDeniedHandler(accessDeniedHandler()))
-          // http.exceptionHandling().accessDeniedHandler(customAccessDeniedHandler)
-             .logout((logout) -> logout
+            .logout((logout) -> logout
                 .logoutUrl("/logout") 
                 .logoutSuccessUrl("/") 
                 .permitAll()
-            );
-            
+            ); 
             //.logout((logout) -> logout.permitAll());
 
         return http.build();
     } 
 
-
+/*
 @Bean
 public AccessDeniedHandler accessDeniedHandler() {
    return new CustomAccessDeniedHandler();
-}
+}*/
 }
 
