@@ -1,0 +1,58 @@
+2024-03-19 13:04:39.587920+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: L'objet est déjà fermé
+The object is already closed [90007-224]
+2024-03-19 13:31:59.657492+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: L'objet est déjà fermé
+The object is already closed [90007-224]
+2024-03-19 13:32:02.739884+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: L'objet est déjà fermé
+The object is already closed [90007-224]
+2024-03-19 13:52:09.323608+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: L'objet est déjà fermé
+The object is already closed [90007-224]
+2024-03-19 13:52:26.952803+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: L'objet est déjà fermé
+The object is already closed [90007-224]
+2024-03-19 13:52:44.656337+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: L'objet est déjà fermé
+The object is already closed [90007-224]
+2024-03-19 14:34:58.876914+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MY_BOOKS" non trouvée
+Table "MY_BOOKS" not found; SQL statement:
+select mbl1_0.book_id,mbl1_0.author,mbl1_0.name,mbl1_0.price from my_books mbl1_0 [42102-224]
+2024-03-19 14:35:00.909183+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "MY_BOOKS" non trouvée
+Table "MY_BOOKS" not found; SQL statement:
+select mbl1_0.book_id,mbl1_0.author,mbl1_0.name,mbl1_0.price from my_books mbl1_0 [42102-224]
+2024-03-19 14:42:31.501162+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: L'objet est déjà fermé
+The object is already closed [90007-224]
+2024-03-19 14:43:06.510338+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: L'objet est déjà fermé
+The object is already closed [90007-224]
+2024-03-19 14:43:09.440060+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: L'objet est déjà fermé
+The object is already closed [90007-224]
+2024-03-19 14:43:12.302135+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: L'objet est déjà fermé
+The object is already closed [90007-224]
+2024-03-19 14:43:14.168570+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: L'objet est déjà fermé
+The object is already closed [90007-224]
+2024-03-19 15:09:21.862408+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Erreur de syntaxe dans l'instruction SQL "INSERT INTO books (name, author, price) values('Gulliver's Travels', 'Jonathan Swift', '6.85€[*]'); "
+Syntax error in SQL statement "INSERT INTO books (name, author, price) values('Gulliver's Travels', 'Jonathan Swift', '6.85€[*]'); "; SQL statement:
+INSERT INTO books (name, author, price) values('Gulliver's Travels', 'Jonathan Swift', '6.85€');  [42000-224]
+2024-03-19 15:12:53.512160+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: L'objet est déjà fermé
+The object is already closed [90007-224]
+2024-03-19 17:32:53.816411+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: L'objet est déjà fermé
+The object is already closed [90007-224]
+2024-03-19 17:33:09.055795+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: L'objet est déjà fermé
+The object is already closed [90007-224]
+2024-03-20 08:26:36.151236+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERSAPP" non trouvée
+Table "USERSAPP" not found; SQL statement:
+select ua1_0.id,ua1_0.password,ua1_0.roles,ua1_0.username from usersapp ua1_0 where ua1_0.username=? [42102-224]
