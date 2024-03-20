@@ -3,8 +3,8 @@ package app.repositories;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
-import app.entities.Book;
+import app.entities.User;
 
-public interface BookRepository extends CrudRepository<Book,Integer>  {
+public interface UserRepository extends CrudRepository<User,Integer>  {
 
 }

@@ -27,22 +27,25 @@ public class Book {
     private String author;
 	
     private String price;
+
+	private String synopsis;
 	
     public Book() {
 		super();
 	}
     
-    public Book(int id, String name, String author, String price) {
+    public Book(int id, String name, String author, String price, String synopsis) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.author = author;
 		this.price = price;
+		this.synopsis = synopsis;
 	}
 
 	@Override
     public String toString() {
-        return String.format("Book[id=%d, name='%s', author='%s', price='%s']", id, name, author, price);
+        return String.format("Book[id=%d, name='%s', author='%s', price='%s', synopsis='%s]", id, name, author, price, synopsis);
     }
 
 	public int getId() {
@@ -75,5 +78,13 @@ public class Book {
 
 	public void setPrice(String price) {
 		this.price = price;
+	}
+
+	public void setSynopsis(String synopsis) {
+		this.synopsis = synopsis;
+	}
+
+	public String getSynopsis() {
+		return synopsis;
 	}
 }

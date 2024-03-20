@@ -53,9 +53,16 @@ public class BookController {
 	@RequestMapping("/mylist/{id}")
 	public String getMyList(@PathVariable("id") int id) {
 		Book b=bookRepository.findById(id).get();
-		MyBookList mb=new MyBookList(b.getId(),b.getName(),b.getAuthor(),b.getPrice());
+		MyBookList mb=new MyBookList(b.getId(),b.getName(),b.getAuthor(),b.getPrice(),b.getSynopsis());
 		myBookRepository.save(mb);
 		return "redirect:/my_books";
+	}
+
+	@GetMapping("/bookDetails/{id}")
+	public String showBookDetails(@PathVariable("id") int id, Model model) {
+		Book b=bookRepository.findById(id).get();
+		model.addAttribute("book", b);
+		return "bookDetails";
 	}
 	
 	@RequestMapping("/editBook/{id}")
