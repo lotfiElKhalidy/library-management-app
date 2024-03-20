@@ -16,30 +16,52 @@ import app.repositories.MyBookRepository;
 
 import java.util.*;
 
-@RequestMapping("/auth")
+@Controller
 public class AuthController {
-
-    @Autowired
-    private UserRepository userRepository;
 
     @GetMapping("/login")
     public String showLoginForm() {
-        return "login"; // renvoie le nom de la vue Thymeleaf ou le chemin de la page HTML
+        return "login";
     }
 
-    // @PostMapping("/login")
-    // public ResponseEntity<String> login(@RequestBody UserLoginRequest loginRequest) {
-        
-    //     String username = loginRequest.getUsername();
-    //     String password = loginRequest.getPassword();
+    @PostMapping("/login")
+    public String login(@RequestParam("username") String username, @RequestParam("password") String password) {
+        if (isValidUser(username, password)) {
+            return "redirect:/";
+        } else {
+            return "redirect:/login?error=true";
+        }
+    }
 
-    //     User user = userRepository.findByUsername(username);
-    //     if (user != null && user.getPassword().equals(password)) {
-    //         // Authentification réussie
-    //         return ResponseEntity.ok("Login successful");
-    //     } else {
-    //         // Authentification échouée
-    //         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
-    //     }
-    // }
+    private boolean isValidUser(String username, String password) {
+        return username.equals("admin") && password.equals("admin123");
+    }
 }
+
+// @RequestMapping("/auth")
+// public class AuthController {
+
+//     @Autowired
+//     private UserRepository userRepository;
+
+//     @GetMapping("/login")
+//     public String showLoginForm() {
+//         return "login";
+//     }
+
+//     // @PostMapping("/login")
+//     // public ResponseEntity<String> login(@RequestBody UserLoginRequest loginRequest) {
+        
+//     //     String username = loginRequest.getUsername();
+//     //     String password = loginRequest.getPassword();
+
+//     //     User user = userRepository.findByUsername(username);
+//     //     if (user != null && user.getPassword().equals(password)) {
+//     //         // Authentification réussie
+//     //         return ResponseEntity.ok("Login successful");
+//     //     } else {
+//     //         // Authentification échouée
+//     //         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
+//     //     }
+//     // }
+// }

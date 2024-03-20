@@ -56,8 +56,7 @@
       <td th:text="${b.price}"></td> 
 </td>
 <td>
-      <!-- <td><a class="btn btn-secondary btn-sm" th:href="@{/mylist/{id}(id=${b.id})}">Add To Mybook</a>  -->
-      <a class="btn btn-info btn-sm" th:href="@{/bookDetails/{id}(id=${b.id})}">Plus</a>
+      <a class="btn btn-primary btn-sm" th:href="@{/bookDetails/{id}(id=${b.id})}">Plus</a>
       <td><a class="btn btn-secondary btn-sm" th:href="@{/mylist/{id}(id=${b.id})}"><i class="fa-solid fa-plus-circle"></i></a>
       <a style="color:blue" th:href="@{/editBook/{id}(id=${b.id})}"><i class="fa-solid fa-pen-to-square ms-4"></i></a>
       <a style="color:red" th:href="@{/deleteBook/{id}(id=${b.id})}"><i class="fa-solid fa-trash ms-4"></i></a>
