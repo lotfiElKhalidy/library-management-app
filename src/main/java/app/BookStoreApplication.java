@@ -40,7 +40,27 @@ public class BookStoreApplication implements CommandLineRunner {
 			");"
 			);
 			log.info("MY_BOOKS TABLE CREATED");
+            jdbcTemplate.execute("DROP TABLE IF EXISTS UserApp");
+jdbcTemplate.execute(
+    "CREATE TABLE UserApp (" +
+    "id            BIGINT AUTO_INCREMENT PRIMARY KEY," +
+    "username      VARCHAR(255) NOT NULL UNIQUE," +
+    "password      VARCHAR(255) NOT NULL," +
+    "roles         VARCHAR(255) NOT NULL" + // Assuming roles are stored as a comma-separated string
+    ");"
+);
+log.info("UserApp TABLE CREATED");
+jdbcTemplate.update(
+    "INSERT INTO UserApp (username, password, roles) VALUES (?, ?, ?)",
+    "user1", "password1", "ROLE_USER"
+);
 
+jdbcTemplate.update(
+    "INSERT INTO UserApp (username, password, roles) VALUES (?, ?, ?)",
+    "user2", "password2", "ROLE_USER"
+);
+
+log.info("Users inserted into UserApp table");
 			// jdbcTemplate.update("INSERT INTO MY_BOOKS (name, author, price) values('The age of Adaline', 'Lorde', '22$'); ");
 			// jdbcTemplate.update("INSERT INTO MY_BOOKS (name, author, price) values('Harry Potter', 'J. K. Rowling', '96$'); ");
 			// jdbcTemplate.update("INSERT INTO MY_BOOKS (name, author, price) values('True Story', 'Ari', '596$'); ");

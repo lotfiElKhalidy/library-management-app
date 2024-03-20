@@ -57,7 +57,10 @@ public class BookController {
 		myBookRepository.save(mb);
 		return "redirect:/my_books";
 	}
-	
+	@GetMapping("/access-denied")
+    public String accessDenied() {
+        return "accessDenied"; 
+    }
 	@RequestMapping("/editBook/{id}")
 	public String editBook(@PathVariable("id") int id,Model model) {
 		Book b=bookRepository.findById(id).get();
